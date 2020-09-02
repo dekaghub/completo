@@ -1,8 +1,10 @@
 body {
   background-color: #1a6fcb;
   display: grid;
-  /* place-items: center; */
-  width: auto;
+  grid-template-rows: 15% 70% 15%;  
+  grid-template-areas: "navigation-bar"
+                       "main-content"
+                       "footer";
 }
 
 h1 {
@@ -10,4 +12,16 @@ h1 {
   text-align: center;
   margin: 10%;
   letter-spacing: 0.5em;
+}
+
+.navbar {
+  grid-area: navigation-bar; 
+}
+
+.content {
+  grid-area: main-content;
+}
+
+.bottom {
+  grid-area: footer;
 }
