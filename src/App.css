@@ -1,9 +1,13 @@
 body {
   background-color: #1a6fcb;
   display: grid;
-  place-items: center;
+  /* place-items: center; */
+  width: auto;
 }
 
 h1 {
   color: #F2C299;
+  text-align: center;
+  margin: 10%;
+  letter-spacing: 0.5em;
 }

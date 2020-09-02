@@ -1,10 +1,12 @@
 import React from 'react';
+import FixedBar from './components/FixedBar.jsx'
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <h1>Hello Start</h1>
+      <h1>COMPLETO</h1>
+      <FixedBar />
     </div>
   );
 }
