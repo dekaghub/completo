@@ -2,4 +2,13 @@
     font-size: 1.5em;
     background: #f0bb56;
     margin: 1.5% 10%;
+    padding-left: 2%;
+}
+
+.EntryBar {
+    font-size: 1.5em;
+    background: #fbe264;
+    margin: 1.5% 10%;
+    color: #737373;
+    padding-left: 2%;
 }

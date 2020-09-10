@@ -1,5 +1,6 @@
 import React from 'react';
 import FixedBar from './components/FixedBar.jsx';
+import EntryBar from './components/EntryBar'
 import Shuffle from './components/Shuffle';
 import './App.css';
 
@@ -15,7 +16,8 @@ const App = () => {
         <div className="content">
           <FixedBar line={test}/>                    
           <FixedBar line={test}/>                    
-          <FixedBar line={test}/>                    
+          <FixedBar line={test}/> 
+          <EntryBar />                   
         </div>
         <div className="bottom">
           <Shuffle />
