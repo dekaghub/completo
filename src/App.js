@@ -3,6 +3,8 @@ import FixedBar from './components/FixedBar.jsx';
 import Shuffle from './components/Shuffle';
 import './App.css';
 
+const test = 'This is a test message';
+
 const App = () => {
   return (
     <div className="App">
@@ -11,11 +13,9 @@ const App = () => {
           <h1>COMPLETO</h1>
         </div>
         <div className="content">
-          <FixedBar className="fixed-bar" />          
-          <FixedBar className="fixed-bar" />          
-          <FixedBar className="fixed-bar" />          
-          <FixedBar className="fixed-bar" />          
-          <FixedBar className="fixed-bar" />          
+          <FixedBar line={test}/>                    
+          <FixedBar line={test}/>                    
+          <FixedBar line={test}/>                    
         </div>
         <div className="bottom">
           <Shuffle />
