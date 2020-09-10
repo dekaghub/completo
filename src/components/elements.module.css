@@ -4,9 +4,6 @@
 } */
 
 .FixedBar {
-    margin: 5em;
-    float: right;
-    width: 75%;
     font-size: 1.5em;
     background: #f0bb56;
 }
