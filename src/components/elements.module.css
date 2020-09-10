@@ -1,9 +1,5 @@
-/* .fixedBar {
-    background-color: #F0BB56;
-    color: #000000;
-} */
-
 .FixedBar {
     font-size: 1.5em;
     background: #f0bb56;
+    margin: 1.5% 10%;
 }

@@ -13,7 +13,6 @@ h1 {
 .grid-container {
   display: grid;
   grid-template-rows: 15% 70% 15%;  
-  /* grid-template-rows: 1fr 1fr 1fr; */
   grid-template-areas: "navigation-bar"
                        "main-content"
                        "footer";
@@ -36,9 +35,4 @@ h1 {
 .bottom {
   grid-area: footer;
   background-color: beige;
-}
-
-.fixed-bar {
-  margin: 5px 5px;
-  border: 5px solid white;
 }
