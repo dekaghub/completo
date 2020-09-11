@@ -8,7 +8,9 @@
 .EntryBar {
     font-size: 1.5em;
     background: #fbe264;
-    margin: 1.5% 10%;
+    margin: 0.75% 10%;
     color: #737373;
+    border: none;
+    width: 80%;
     padding-left: 2%;
-}
+}   

@@ -18,6 +18,7 @@ const App = () => {
           <FixedBar line={test}/>                    
           <FixedBar line={test}/> 
           <EntryBar />                   
+          <EntryBar />                   
         </div>
         <div className="bottom">
           <Shuffle />
