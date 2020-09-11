@@ -16,7 +16,7 @@ export class EntryBar extends Component {
         return (
                 <input
                     className={styles.EntryBar}
-                    placeholder="Type to complete"
+                    placeholder="Type to complete..."
                     value={this.line}
                     onChange={ (e) => this.setState({line: e.target.value}) }
                 />
