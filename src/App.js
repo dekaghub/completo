@@ -11,6 +11,20 @@ I wish I would've known
 I didn't tell her that I loved her and how much I care
 `;
 
+const charToAst = (line) => {
+  const words = line.split(' ');
+  var hiddenLine = '';
+
+  words.map(word => {
+    hiddenLine += Math.floor(Math.random() * 2) ? "*".repeat(word.length):word;
+    if(!words.length - 1) {
+      hiddenLine += " ";
+    }
+  });
+
+  return hiddenLine;
+}
+
 const App = () => {
   return (
     <div className="App">
@@ -20,7 +34,7 @@ const App = () => {
         </div>
         <div className="content">
           { test.split('\n').map((x) => 
-            <FixedBar line={x} />
+            <FixedBar line={Math.floor(Math.random() * 2) ? charToAst(x):x} />
           )}
           <EntryBar />                   
           <EntryBar />                   
