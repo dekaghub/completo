@@ -4,7 +4,12 @@ import EntryBar from './components/EntryBar'
 import Shuffle from './components/Shuffle';
 import './App.css';
 
-const test = 'This is a test message';
+const test = `
+Last day of the rest of my life
+I wish I would've known
+'Cause I would've kissed my mama goodbye
+I didn't tell her that I loved her and how much I care
+`;
 
 const App = () => {
   return (
@@ -14,9 +19,9 @@ const App = () => {
           <h1>COMPLETO</h1>
         </div>
         <div className="content">
-          <FixedBar line={test}/>                    
-          <FixedBar line={test}/>                    
-          <FixedBar line={test}/> 
+          { test.split('\n').map((x) => 
+            <FixedBar line={x} />
+          )}
           <EntryBar />                   
           <EntryBar />                   
         </div>
