@@ -1,8 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 import FixedBar from './components/FixedBar.jsx';
 import EntryBar from './components/EntryBar'
 import Shuffle from './components/Shuffle';
 import './App.css';
+import styles from './components/elements.module.css'
 
 const test = `
 Last day of the rest of my life
@@ -26,6 +28,15 @@ const charToAst = (line) => {
 }
 
 const App = () => {
+
+  getLyrics = (word) => {
+    axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${word}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => console.log(err));
+  }
+
   return (
     <div className="App">
       <div className="grid-container">
@@ -33,14 +44,17 @@ const App = () => {
           <h1>COMPLETO</h1>
         </div>
         <div className="content">
-          { test.split('\n').map((x) => 
-            <FixedBar line={Math.floor(Math.random() * 2) ? charToAst(x):x} />
-          )}
+          { test.split('\n').map((x) => <FixedBar line={x} /> )}
           <EntryBar />                   
           <EntryBar />                   
         </div>
         <div className="bottom">
-          <Shuffle />
+        <button 
+                className={styles.ShuffleButton}
+                onClick={getLyrics('Drive')}
+            >
+                Randomize
+            </button>
         </div>
       </div>
     </div>

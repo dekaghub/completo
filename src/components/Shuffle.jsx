@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import styles from './elements.module.css'
 
 export class Shuffle extends Component {
     render() {
         return (
-            <div>
-                Shuffle button
-            </div>
+            <button 
+                className={styles.ShuffleButton}
+            >
+                Randomize
+            </button>
         )
     }
 }
