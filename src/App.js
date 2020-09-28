@@ -29,13 +29,13 @@ const charToAst = (line) => {
 
 const App = () => {
 
-  getLyrics = (word) => {
-    axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${word}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
-              .then(res => {
-                  console.log(res);
-              })
-              .catch(err => console.log(err));
-  }
+  // getLyrics = (word) => {
+  //   axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${word}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
+  //             .then(res => {
+  //                 console.log(res);
+  //             })
+  //             .catch(err => console.log(err));
+  // }
 
   return (
     <div className="App">
@@ -49,12 +49,12 @@ const App = () => {
           <EntryBar />                   
         </div>
         <div className="bottom">
-        <button 
+        {/* <button 
                 className={styles.ShuffleButton}
                 onClick={getLyrics('Drive')}
             >
                 Randomize
-            </button>
+            </button> */}
         </div>
       </div>
     </div>

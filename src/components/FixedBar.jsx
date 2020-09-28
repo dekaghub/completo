@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './elements.module.css'
 
+export default function fixedBar(props) {
 
-export class FixedBar extends Component {
-    render() {
-        return (
-            <div className={styles.FixedBar}>
-                {this.props.line}
-            </div>
-        )
-    }
+    return (
+        <div className={styles.FixedBar}>
+            {props.line}
+        </div>
+    )
 }
-
-export default FixedBar;
