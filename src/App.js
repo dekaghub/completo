@@ -1,41 +1,14 @@
 import React from 'react';
-import axios from 'axios';
-import FixedBar from './components/FixedBar.jsx';
-import EntryBar from './components/EntryBar'
-import Shuffle from './components/Shuffle';
+import EntryBar from './components/entrybar.jsx';
+import Lines from './components/lines'
 import './App.css';
 import styles from './components/elements.module.css'
 
-const test = `
-Last day of the rest of my life
-I wish I would've known
-'Cause I would've kissed my mama goodbye
-I didn't tell her that I loved her and how much I care
-`;
-
-const charToAst = (line) => {
-  const words = line.split(' ');
-  var hiddenLine = '';
-
-  words.map(word => {
-    hiddenLine += Math.floor(Math.random() * 2) ? "*".repeat(word.length):word;
-    if(!words.length - 1) {
-      hiddenLine += " ";
-    }
-  });
-
-  return hiddenLine;
-}
-
 const App = () => {
 
-  // getLyrics = (word) => {
-  //   axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${word}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
-  //             .then(res => {
-  //                 console.log(res);
-  //             })
-  //             .catch(err => console.log(err));
-  // }
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <div className="App">
@@ -44,17 +17,18 @@ const App = () => {
           <h1>COMPLETO</h1>
         </div>
         <div className="content">
-          { test.split('\n').map((x) => <FixedBar line={x} /> )}
+          <Lines />
+          {/* { console.log(Math.floor(Math.random() * (5 - 2) + 2))} */}
           <EntryBar />                   
           <EntryBar />                   
         </div>
         <div className="bottom">
-        {/* <button 
-                className={styles.ShuffleButton}
-                onClick={getLyrics('Drive')}
-            >
-                Randomize
-            </button> */}
+          <button 
+              className={styles.ShuffleButton}
+              onClick={refreshPage}
+          >
+              Randomize
+          </button>
         </div>
       </div>
     </div>

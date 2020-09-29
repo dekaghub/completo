@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './elements.module.css'
 
-export default function fixedBar(props) {
+
+function FixedBars(props) {
 
     return (
         <div className={styles.FixedBar}>
@@ -9,3 +10,5 @@ export default function fixedBar(props) {
         </div>
     )
 }
+
+export default FixedBars;
