@@ -13,17 +13,25 @@ const wordList = ['Drive', 'Roxanne', 'Hurt', 'Love', 'Life', 'Believe', 'Mood',
 
 function Lines() {
 
-    const [tracks, setTracks] = useState([])
-    const [lyrics, setLyrics] = useState('')
+    const [tracks, setTracks] = useState({})
+    // const [lyrics, setLyrics] = useState('')
 
     useEffect(() => {
         const query = wordList[Math.floor(Math.random() * wordList.length)];
 
-        axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${query}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
-              .then(res => setTracks(res.data.message.body.track_list))
-              .catch(err => console.log(err));
+        // axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${query}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
+        //       .then(res => {
+        //           let track_list = res.data.message.body.track_list
+        //           console.log('track_list ', track_list)
+        //           setTracks(track_list)
+        //       })
+        //       .catch(err => console.log(err));
+        let test_tracks = { query: query,
+                            randomNum: Math.random() * 20,
+                            list: '2'}
+        setTracks(test_tracks)
 
-        console.log(tracks);
+        console.log('tracks : ', tracks);
     }, [])
 
     return (
