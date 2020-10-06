@@ -14,6 +14,7 @@ h1 {
 .grid-container {
   letter-spacing: 0.25em;
   display: grid;
+  margin: 2.5% 2.5%;
   grid-template-rows: 5% 85% 10%;  
   grid-template-areas: "navigation-bar"
                        "main-content"
@@ -37,6 +38,7 @@ h1 {
 .bottom {
   grid-area: footer;
   justify-content: center;
+  place-items: center;
   align-items: center;
   background-color: beige;
 }

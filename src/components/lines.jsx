@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import FixedBars from "./fixedbars";
+import FixedBars from "./FixedBars";
 
 const wordList = [
   "Drive",

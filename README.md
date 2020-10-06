@@ -1,8 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## completo
+# completo
 
 Write songs (or poems) and explore your writing skills/niche.
+
+---
+
+## Log
+
+The app is a work in progress.
+
+Currently I am working on the CSS and some changes with the entry lines.
+
+The current colors are set for testing the layout of the grid.
+
+![](./completo-wip.gif)
+
+
+---
 
 For any questions/suggestions : https://twitter.com/defie_xx
 
