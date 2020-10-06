@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import FixedBars from "./fixedbars";
-import { queryHelpers } from "@testing-library/react";
-
-const test = `
-So I've been doing a good job of makin' 'em think
-I'm quite alright, better hope I don't blink
-You see it's easy when I'm stomping on a beat
-But no one sees me when I crawl back underneath
-`;
 
 const wordList = [
   "Drive",
@@ -22,8 +14,8 @@ const wordList = [
 ];
 
 function Lines() {
-  const [tracks, setTracks] = useState({});
   const [lyrics, setLyrics] = useState("");
+  const [lineCount, setLineCount] = useState(4);
 
   const fetchLyrics = async (query) => {
     const url = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${query}&page=1&page_size=10&country=us&f_has_lyrics=1&f_lyrics_language=en&apikey=${process.env.REACT_APP_MM_KEY}`;
@@ -31,7 +23,8 @@ function Lines() {
     const res = await axios.get(url);
     const track_list = res.data.message.body.track_list;
 
-    const random_track = track_list[Math.floor(Math.random() * Math.floor(10))];
+    const random_track =
+      track_list[Math.floor(Math.random() * Math.floor(track_list.length))];
 
     const track_lyrics = await axios.get(
       `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${random_track.track.track_id}&apikey=${process.env.REACT_APP_MM_KEY}`
@@ -40,6 +33,7 @@ function Lines() {
     const api_lyrics = track_lyrics.data.message.body.lyrics.lyrics_body;
 
     setLyrics(api_lyrics);
+    setLineCount(Math.floor(Math.random() * (7 - 3) + 3));
   };
 
   useEffect(() => {
@@ -47,9 +41,11 @@ function Lines() {
     fetchLyrics(query);
   }, []);
 
+  const lines = lyrics.split("\n").slice(0, lineCount);
+
   return (
     <div>
-      {lyrics.split("\n").map((x, index) => (
+      {lines.map((x, index) => (
         <FixedBars
           line={Math.floor(Math.random() * 2) ? charToAst(x) : x}
           key={index}
