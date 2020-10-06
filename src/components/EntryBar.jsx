@@ -1,27 +1,22 @@
-import React, { Component, useState } from 'react'
-import styles from './elements.module.css'
+import React, { useState } from 'react';
+import styles from './elements.module.css';
 
-export class EntryBar extends Component {
+function EntryBar() {
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-             line: ''
-        }
+    const [line, setLine] = useState('');
+
+    function handleLine(e) {
+        setLine(e.target.value);
     };
-    
-    
-    render() {
-        return (
-                <input
-                    className={styles.EntryBar}
-                    placeholder="Type to complete..."
-                    value={this.line}
-                    onChange={ (e) => this.setState({line: e.target.value}) }
-                />
-        )
-    }
+
+    return (
+            <input
+                className={styles.EntryBar}
+                placeholder="Type to complete..."
+                value={line}
+                onChange={handleLine}
+            />
+    )
 }
 
-export default EntryBar
+export default EntryBar;

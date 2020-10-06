@@ -14,4 +14,37 @@
     border: none;
     width: 80%;
     padding-left: 2%;
-}   
+}  
+
+.ShuffleButton {
+    background: #F2C299; 
+    color: white;
+    box-sizing: border-box;
+    appearance: none;
+    border: 2px solid white;
+    border-radius: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+}
+
+.ShuffleButton:hover {
+    background: #f5b277;
+    color: rgb(122, 122, 122);
+}
+
+.ShuffleButton:active {
+    background: #e9954c;
+    color: black;
+}

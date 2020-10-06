@@ -1,12 +1,15 @@
 import React from 'react';
-import FixedBar from './components/FixedBar.jsx';
-import EntryBar from './components/EntryBar'
-import Shuffle from './components/Shuffle';
+import EntryBar from './components/entrybar.jsx';
+import Lines from './components/lines'
 import './App.css';
-
-const test = 'This is a test message';
+import styles from './components/elements.module.css'
 
 const App = () => {
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="App">
       <div className="grid-container">
@@ -14,14 +17,18 @@ const App = () => {
           <h1>COMPLETO</h1>
         </div>
         <div className="content">
-          <FixedBar line={test}/>                    
-          <FixedBar line={test}/>                    
-          <FixedBar line={test}/> 
+          <Lines />
+          {/* { console.log(Math.floor(Math.random() * (5 - 2) + 2))} */}
           <EntryBar />                   
           <EntryBar />                   
         </div>
         <div className="bottom">
-          <Shuffle />
+          <button 
+              className={styles.ShuffleButton}
+              onClick={refreshPage}
+          >
+              Randomize
+          </button>
         </div>
       </div>
     </div>
