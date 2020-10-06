@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import FixedBars from './fixedbars'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import FixedBars from "./fixedbars";
+import { queryHelpers } from "@testing-library/react";
 
 const test = `
 So I've been doing a good job of makin' 'em think
@@ -9,53 +10,69 @@ You see it's easy when I'm stomping on a beat
 But no one sees me when I crawl back underneath
 `;
 
-const wordList = ['Drive', 'Roxanne', 'Hurt', 'Love', 'Life', 'Believe', 'Mood', 'Crazy'];
+const wordList = [
+  "Drive",
+  "Roxanne",
+  "Hurt",
+  "Love",
+  "Life",
+  "Believe",
+  "Mood",
+  "Crazy",
+];
 
 function Lines() {
+  const [tracks, setTracks] = useState({});
+  const [lyrics, setLyrics] = useState("");
 
-    const [tracks, setTracks] = useState({})
-    // const [lyrics, setLyrics] = useState('')
+  const fetchLyrics = async (query) => {
+    const url = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${query}&page=1&page_size=10&country=us&f_has_lyrics=1&f_lyrics_language=en&apikey=${process.env.REACT_APP_MM_KEY}`;
 
-    useEffect(() => {
-        const query = wordList[Math.floor(Math.random() * wordList.length)];
+    const res = await axios.get(url);
+    const track_list = res.data.message.body.track_list;
 
-        // axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q=${query}&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
-        //       .then(res => {
-        //           let track_list = res.data.message.body.track_list
-        //           console.log('track_list ', track_list)
-        //           setTracks(track_list)
-        //       })
-        //       .catch(err => console.log(err));
-        let test_tracks = { query: query,
-                            randomNum: Math.random() * 20,
-                            list: '2'}
-        setTracks(test_tracks)
+    const random_track = track_list[Math.floor(Math.random() * Math.floor(10))];
 
-        console.log('tracks : ', tracks);
-    }, [])
+    const track_lyrics = await axios.get(
+      `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${random_track.track.track_id}&apikey=${process.env.REACT_APP_MM_KEY}`
+    );
 
-    return (
-        <div>
-            { test.split('\n').map((x, index) => 
-                <FixedBars line={Math.floor(Math.random() * 2) ? charToAst(x):x} key={index} />
-          )}
-        </div>
-    )
+    const api_lyrics = track_lyrics.data.message.body.lyrics.lyrics_body;
+
+    setLyrics(api_lyrics);
+  };
+
+  useEffect(() => {
+    const query = wordList[Math.floor(Math.random() * wordList.length)];
+    fetchLyrics(query);
+  }, []);
+
+  return (
+    <div>
+      {lyrics.split("\n").map((x, index) => (
+        <FixedBars
+          line={Math.floor(Math.random() * 2) ? charToAst(x) : x}
+          key={index}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default Lines
-
+export default Lines;
 
 const charToAst = (line) => {
-    const words = line.split(' ');
-    var hiddenLine = '';
-  
-    words.forEach(word => {
-      hiddenLine += Math.floor(Math.random() * 2) ? "*".repeat(word.length):word;
-      if(!words.length - 1) {
-        hiddenLine += " ";
-      }
-    });
-  
-    return hiddenLine;
-  }
+  const words = line.split(" ");
+  var hiddenLine = "";
+
+  words.forEach((word) => {
+    hiddenLine += Math.floor(Math.random() * 2)
+      ? "*".repeat(word.length)
+      : word;
+    if (!words.length - 1) {
+      hiddenLine += " ";
+    }
+  });
+
+  return hiddenLine;
+};
